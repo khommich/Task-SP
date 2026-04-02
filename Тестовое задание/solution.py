@@ -53,7 +53,7 @@ def compute_gradients(X, y, weights):
     d2 = (y_hat - y).reshape(-1, 1)
     grad_W2 = (d2[:, :, np.newaxis] * a1[:, np.newaxis, :])
     grad_b2 = d2
-    relu_grad_z1 = (z1 > 0).astype(float)
+    relu_grad_z1 = relu_grad(z1).astype(float)
     d1 = (d2 @ W2) * relu_grad_z1
     grad_W1 = (d1[:, :, np.newaxis] * X[:, np.newaxis, :])
     grad_b1 = d1
